@@ -3,10 +3,12 @@
 const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
-  async index() {
-    const { ctx } = this;
-    const user = await ctx.service.user.find();
-    ctx.body = user;
+  async find() {
+    const {
+      ctx,
+    } = this;
+    const id = +ctx.query.id;
+    ctx.body = await ctx.service.user.find(id);
   }
 }
 

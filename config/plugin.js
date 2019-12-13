@@ -8,7 +8,7 @@
 // }
 // };
 /** 开启数据库插件*/
-exports.mysql = {
+exports.sequelize = {
   enable: true,
-  package: 'egg-mysql',
+  package: 'egg-sequelize',
 };

@@ -23,19 +23,14 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
   /** 数据库配置使用 */
-  exports.mysql = {
+  exports.sequelize = {
+    dialect: 'mysql',
     // database configuration
-    client: {
-      host: '192.144.130.250',
-      port: '3306',
-      user: 'root',
-      password: 'songyingchun123',
-      database: 'test',
-    },
-    // load into app, default true
-    app: true,
-    // load into agent, default false
-    agent: false,
+    host: '192.144.130.250',
+    port: '3306',
+    user: 'root',
+    password: 'songyingchun123',
+    database: 'test',
   };
   return {
     ...config,
