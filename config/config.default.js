@@ -22,6 +22,12 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
+  /** 解决post token无效*/
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
   /** 数据库配置使用 */
   exports.sequelize = {
     dialect: 'mysql',
