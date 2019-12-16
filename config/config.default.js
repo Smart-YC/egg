@@ -27,11 +27,24 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
+    domainWhiteList: [ 'http://127.0.0.1' ],
+  };
+
+  config.cors = {
+    credentials: true,
+  };
+
+  config.alinode = {
+    enable: true,
+    appid: 'your appid',
+    secret: 'your secret',
   };
   /** 数据库配置使用 */
   exports.sequelize = {
     dialect: 'mysql',
-    // database configuration
+    dialectOptions: {
+      charset: 'utf8mb4',
+    },
     host: '192.144.130.250',
     port: '3306',
     user: 'root',

@@ -95,13 +95,12 @@ class UserService extends Service {
   }
 
   // 更新用户信息
-  async update(user) {
+  async update({ id, user }) {
     const {
       ctx,
     } = this;
     try {
-      console.log(user)
-      const userDB = await ctx.model.User.findByPk(user.id);
+      const userDB = await ctx.model.User.findByPk(id);
       if (!userDB) {
         ctx.status = 400;
         return Object.assign(ERROR, {
@@ -111,7 +110,6 @@ class UserService extends Service {
       const res = await userDB.update(user);
       ctx.status = 200;
       return Object.assign(SUCCESS, {
-        data: res,
       });
 
     } catch (error) {

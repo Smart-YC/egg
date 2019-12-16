@@ -10,6 +10,7 @@ class HomeController extends Controller {
     } = this;
     ctx.body = 'hello world!';
   }
+
   // 查找用户详情
   async find() {
     const {
@@ -18,6 +19,7 @@ class HomeController extends Controller {
     const id = +ctx.query.id;
     ctx.body = await ctx.service.user.find(id);
   }
+
   // 新增用户
   async create() {
     const {
@@ -26,6 +28,7 @@ class HomeController extends Controller {
     const params = ctx.query;
     ctx.body = await ctx.service.user.create(params);
   }
+
   // 查找用户详情
   async del() {
     const {
@@ -34,14 +37,19 @@ class HomeController extends Controller {
     const id = +ctx.query.id;
     ctx.body = await ctx.service.user.del(id);
   }
+
   // 更新用户详情
   async update() {
     const {
       ctx,
     } = this;
-    console.log(ctx.query)
-    const user = ctx.query.body;
-    ctx.body = await ctx.service.user.update(user);
+    const {
+      id,
+      user,
+    } = ctx.request.body;
+    ctx.body = await ctx.service.user.update({
+      id, user,
+    });
   }
 }
 
