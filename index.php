@@ -3,6 +3,7 @@ $secret = "songyingchun";  //密钥，和 GitHub 上对应
 $path = "/root/smart-yc/app/egg-service/egg";  //服务器上的项目文件目录
 $signature = $_SERVER["HTTP_X_HUB_SIGNATURE"];  //获取散列字符串
 if($signature) {
+
     $rawPost = file_get_contents("php://input");  //获取收到的数据
     list($algo, $hash) = explode("=", $signature, 2);  //获取散列算法、散列值
     if ($hash === hash_hmac($algo, $rawPost, $secret)) {  //验证
