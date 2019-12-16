@@ -27,17 +27,12 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
-    domainWhiteList: [ 'http://127.0.0.1' ],
+    domainWhiteList: ['http://127.0.0.1'],
   };
-
+  /** 允许跨域*/
   config.cors = {
-    credentials: true,
-  };
-
-  config.alinode = {
-    enable: true,
-    appid: 'your appid',
-    secret: 'your secret',
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
   /** 数据库配置使用 */
   exports.sequelize = {
