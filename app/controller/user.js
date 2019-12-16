@@ -2,7 +2,7 @@
 
 const Controller = require('egg').Controller;
 
-class HomeController extends Controller {
+class UserController extends Controller {
   // 首页
   async hello() {
     const {
@@ -53,4 +53,4 @@ class HomeController extends Controller {
   }
 }
 
-module.exports = HomeController;
+module.exports = UserController;
