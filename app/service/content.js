@@ -3,21 +3,27 @@
 const Service = require('egg').Service;
 const { ERROR, SUCCESS } = require('../util/util');
 
-class TabService extends Service {
-  // 查询标签列表
-  async find() {
+class ContentService extends Service {
+  // 根据标签id查询内容列表
+  async find(id) {
     const { ctx } = this;
     try {
-      const tab = await ctx.model.Tab.findAll();
-      if (!tab) {
-        ctx.status = 401;
+      const content = await ctx.model.Content.findAll(
+        {
+          where: {
+            type_id: id,
+          },
+        }
+      );
+      if (!content) {
+        ctx.status = 200;
         return Object.assign(ERROR, {
           msg: '暂无数据',
         });
       }
       ctx.status = 200;
       return Object.assign(SUCCESS, {
-        data: tab,
+        data: content,
       });
     } catch (error) {
       throw (500);
@@ -25,4 +31,4 @@ class TabService extends Service {
   }
 }
 
-module.exports = TabService;
+module.exports = ContentService;
